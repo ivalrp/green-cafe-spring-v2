@@ -3,6 +3,7 @@ package com.green.cafee.springboot.v2.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.green.cafee.springboot.v2.dto.JobPositionResponseDTO;
 import com.green.cafee.springboot.v2.dto.LastEducationResponseDTO;
+import com.green.cafee.springboot.v2.dto.PaymentTypeResponseDTO;
 import com.green.cafee.springboot.v2.service.MetaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -39,9 +40,20 @@ public class MetaController {
 
     @GetMapping("/v2/bank/{code}")
     public ResponseEntity<Map<String, Object>> findBank(@PathVariable String code) throws FileNotFoundException, JsonProcessingException {
-        return ResponseEntity.ok().body(metaService.bankResource(code));
+        return ResponseEntity.ok().body(metaService.bankResourceDetail(code));
     }
-
+    @GetMapping("/v2/bank")
+    public ResponseEntity<List<Map<String, Object>>> findBank() throws FileNotFoundException, JsonProcessingException {
+        return ResponseEntity.ok().body(metaService.bankResource());
+    }
+    @GetMapping("/v2/paymentType")
+    public ResponseEntity<List<PaymentTypeResponseDTO>> findPaymentType() {
+        return ResponseEntity.ok().body(metaService.findPaymentType());
+    }
+    @GetMapping("/v2/itemCategory")
+    public ResponseEntity<List<Map<String, Object>>> findItemCategory() {
+        return ResponseEntity.ok().body(metaService.findItemCategory());
+    }
 
 
 }

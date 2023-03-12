@@ -1,13 +1,14 @@
 package com.green.cafee.springboot.v2.model;
 
-import com.green.cafee.springboot.v2.model.base.UpdatedBase;
-import jakarta.persistence.*;
+import com.green.cafee.springboot.v2.model.base.SecureId;
 import lombok.Data;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "app_user")
 @Data
-public class AppUser extends UpdatedBase {
+public class AppUser extends SecureId {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

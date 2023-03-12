@@ -1,19 +1,21 @@
 package com.green.cafee.springboot.v2.model;
 
 import com.green.cafee.springboot.v2.model.base.CrudBase;
-import com.green.cafee.springboot.v2.model.base.SecureId;
 import lombok.Data;
 
 import javax.persistence.*;
 
 @Entity
+@Table(name = "payment_type")
 @Data
-@Table(name = "last_education")
-public class LastEducation extends SecureId {
+public class PaymentType extends CrudBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "code", nullable = false)
+    private String code;
 
     @Column(name = "name", nullable = false)
     private String name;
